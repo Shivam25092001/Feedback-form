@@ -1,7 +1,8 @@
 import React from 'react'
-import { Space, Divider, Button, Rate, DatePicker, Form, Input, Radio, Row, Col } from 'antd';
+import { Typography, Space, Divider, Button, Rate, DatePicker, Form, Input, Radio, Row, Col } from 'antd';
 import 'antd/dist/antd.css';
 import './feedback.css'
+const { Title } = Typography;
 
 const FeedbackForm = () => {
 
@@ -15,9 +16,11 @@ const FeedbackForm = () => {
 
   return (
     <div>
-        <h2>
+        <Space direction="vertical" size="large" style={{ display: 'flex' }}>
+        <Title level={3}>
             Student Feedback Form
-        </h2>
+        </Title>
+        
 
         <Form name = "feedback"
             onFinish={onFinish}
@@ -25,7 +28,7 @@ const FeedbackForm = () => {
         >
             <Form.Item
                 name = "rollno"
-                label = "Registration No."
+                label = "Registration Number"
             >
                 <Input/>
             </Form.Item>
@@ -53,6 +56,7 @@ const FeedbackForm = () => {
                 name = "date_filling"
                 label = "Date of feedback"
                 required
+                style={{width: '40%'}}
             >
                 <DatePicker/>
             </Form.Item>
@@ -71,7 +75,7 @@ const FeedbackForm = () => {
             </Space>
 
             <Form.Item
-                label="Has the Teacher covered entire Syllabus as prescribed by University?"
+                label={<strong>Has the Teacher covered entire Syllabus as prescribed by University?</strong>}
             >
                 <Form.Item name="response1" label="DBMS">
                 <Radio.Group>
@@ -110,7 +114,7 @@ const FeedbackForm = () => {
             </Form.Item>
 
 
-            <Form.Item label="Effectiveness of Teacher in terms of">
+            <Form.Item label={<strong>Effectiveness of Teacher in terms of</strong>}>
                 <Form.Item label="1. Teaching Content">
                     <Form.Item name="dbms1" label = "DBMS"><Rate/></Form.Item>
                     <Form.Item name="cn1" label = "CN"><Rate/></Form.Item>
@@ -156,7 +160,13 @@ const FeedbackForm = () => {
             </Form.Item>
 
 
-            <Form.Item label="How do you rate the contents of the curriculam ?">
+
+            <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+                <Divider />
+            </Space>
+
+
+            <Form.Item label={<strong>How do you rate the contents of the curriculam ?</strong>}>
                     <Form.Item name="dbms6" label = "DBMS"><Rate/></Form.Item>
                     <Form.Item name="cn6" label = "CN"><Rate/></Form.Item>
                     <Form.Item name="mc6" label = "MC"><Rate/></Form.Item>
@@ -165,7 +175,7 @@ const FeedbackForm = () => {
             </Form.Item>
 
 
-            <Form.Item label="How do you rate lab experiments, if applicable ?">
+            <Form.Item label={<strong>How do you rate lab experiments, if applicable ?</strong>}>
                     <Form.Item name="dbms7" label = "DBMS"><Rate/></Form.Item>
                     <Form.Item name="cn7" label = "CN"><Rate/></Form.Item>
                     <Form.Item name="mc7" label = "MC"><Rate/></Form.Item>
@@ -174,7 +184,13 @@ const FeedbackForm = () => {
             </Form.Item>
 
 
-            <Row gutter={[8,8]}>
+
+            <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+                <Divider />
+            </Space>
+
+
+            <Row gutter={[8,16]}>
                 <Col>
                 <Form.Item
                     name = "remarks"
@@ -207,6 +223,7 @@ const FeedbackForm = () => {
                 Submit
             </Button>
         </Form>
+        </Space>
     </div>
   )
 }
